@@ -24,14 +24,14 @@ import (
 )
 
 // LoadRegoMetadata reads rego meta data file
-func LoadRegoMetadata(file string) (*policy.RegoMetadata, error) {
+func LoadRegoMetadata(file string) (*policy.RegoMetadata, e) {
 	metadata, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}
 	// Read metadata into struct
 	regoMetadata := policy.RegoMetadata{}
-	if err = json.Unmarshal(metadata, &regoMetadata); err != nil {
+	if err = json.Unmarshal(&regoMetadata); err != nil {
 		return nil, err
 	}
 	return &regoMetadata, nil
